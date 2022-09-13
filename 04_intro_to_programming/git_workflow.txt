@@ -1,0 +1,64 @@
+Create a Github Account and Token (one time setup)
+In order to create repositories, you will need to have a Github account, and you will need a Personal Access Token to use for authenticating your account from the command line.
+
+●	Navigate to Github.com
+●	If you have an existing account, log in (MFA recommended)
+●	Choose to Create an account - use an email address you can remember, as you often use it on Github to find users.  Once you create an account, log in.
+●	Under your profile image (upper right corner), select Settings
+●	Navigate to Developer Settings (bottom left) and then choose “Personal Access Tokens”
+●	Create a token, and save it to a secure location - this will act as your password!
+
+
+Create a Fork of the repository (one time setup)
+A “fork” of a repository is your own personal copy - it contains all the code / documents / assets of the original, including the complete history of changes, but you have the ability to modify it.  Your fork does not affect the original repository.
+
+●	Ensure you are logged in to Github (check for your profile picture in the upper right corner)
+●	Navigate to the original repository URL provided
+●	Select the “Fork” button (tree icon) in the upper right
+●	Choose an Owner to fork into if necessary
+●	Choose a repository name (the default is fine)
+●	Select Create Fork (this may take a few seconds)
+●	Verify that your URL has changed to your own account (the code should look the same)
+
+
+Clone the repository to your “local” machine (one time setup)
+Cloning uses the git tool to copy down all of the files from the repository and all of the history, branches, and commits of that repository to your local machine so you can work with the files and make your own changes.  This automatically adds a link back to your fork for you to send changes back up later.
+
+●	Navigate to your Fork URL if you are not already there.
+●	Under the “Code” button, you should see an HTTPS tab.  Copy the command in the box (or press the “copy to clipboard” button)
+●	Open a terminal window on your local machine
+●	Change directories to where you would like the repository code to be located, if necessary.
+●	Paste the git clone command you copied from Github (Ctrl-Shift-V in a Linux terminal)
+●	If prompted for a username, enter your Github username
+●	If prompted for a password, enter your Github Personal Access Token you created previously. Your regular Github password for logging into the website will NOT work.
+●	You should see a series of messages about packing objects, etc and eventually a message that shows a new local branch was created from the remote repository.
+●	Configure git with your account information to make updates easier in the future:
+        git config --global user.name “<Your Name>”
+        git config --global user.email “<Github Email>”
+
+
+Daily Example Workflow (Task branching)
+In order to change things efficiently and avoid conflicts with team members on highly collaborative projects, many teams adopt a Task Branching workflow, where each new task is built on a separate branch, and then merged in via a Pull Request once reviewed / approved by the team.
+
+●	Create a new branch (choose an appropriate name for the task)
+        git branch <branchname>
+●	Switch to the new branch
+        git checkout <branchname>
+        (to verify: git status or git branch)
+●	Add your changes to the Staging Area
+        git add . (add current directory recursively)
+        OR
+        git add <filename> (add specific files / paths)
+●	Commit your changes to your local repository (does not affect Github).  An editor should pop up and ask you to type in a commit message that explains why you are making this commit.git commit(to verify: git log)
+●	Push your new branch and commits to the remote repository on Githubgit push origin <branchname>
+●	In your web browser, navigate to your repository and select the branch button (center top, tree icon) to view all of your branches.
+●	Next to the branch name you just pushed, select Create Pull Request
+●	When prompted for Source and Destination, make sure your own repository is the destination repository.
+●	Choose an appropriate title, description, etc. for your Pull Request.
+●	Create the Pull Request (this may take a few moments)
+●	You should be automatically redirected to the new Pull Request.  You can examine your code changes here, add comments, perform code reviews, or approve / decline the pull request from this page.
+●	Choose Merge at the bottom of the page.  This merges your work back into your primary branch.Your work is now on the primary branch on Github, but this has not been reflected on your local repository yet.
+●	In your terminal window on your local machine, switch back to the primary branchgit checkout <primary> (usually “main” or “master”)
+●	Pull down the latest changes (your merge) from Githubgit pull origin <primary>
+●	OPTIONAL: Clean up your now-merged task branchgit branch -d <branchname>
+●	Repeat this process for each new task!  Practice makes perfect! 
