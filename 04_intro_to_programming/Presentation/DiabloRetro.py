@@ -31,7 +31,7 @@ def ChurchLvl1():
 def TownSquare2():
   directions = []
   print("You are back in the Town Square.  Move forward to return to the Church or feel free to explore the town.")
-  print("The Griswald the Blacksmith stands on your left.  The Adria the Witch on your right.  Deckard Cain is still standing near the well behind you.")
+  print("Griswald the Blacksmith stands on your left.  Adria the Witch on your right.  Deckard Cain is still standing near the well behind you.")
   print("You remember you need to move forward in order to head towards the Church.")
   print(f'Level: {CharLvl}, XP: {ShowXP}%')
   userInput = ""
