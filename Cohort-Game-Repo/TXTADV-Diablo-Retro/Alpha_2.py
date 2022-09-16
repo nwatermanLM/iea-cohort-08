@@ -1,88 +1,16 @@
 #!/bin/python3
 # PLEASE SEE READ ME FOR MORE INFORMATION
 # WELCOME TO MY PYTHON TEXT ADVENTURE GAME
-# VERSION ALPHA 1.0
-
-def CharSheet():
-  print('/\ \/' * 10)
-  directions = []
-  userInput = ''
-  print('Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
-  if myclass == class_options[0]:
-      print('STR:', WarStats['Str'], '_'*2, 'MAG:', WarStats["Mag"], '_'*2, 'DEX:', WarStats["Dex"], '_'*2, 'VIT:', WarStats["Vit"], '_'*2, sep='')
-  if myclass == class_options[1]:
-    print('STR:', RogStats['Str'], '_'*2, 'MAG:', RogStats["Mag"], '_'*2, 'DEX:', RogStats["Dex"], '_'*2, 'VIT:', RogStats["Vit"], '_'*2, sep='')
-  if myclass == class_options[2]:
-    print('STR:', SorStats['Str'], '_'*2, 'MAG:', SorStats["Mag"], '_'*2, 'DEX:', SorStats["Dex"], '_'*2, 'VIT:', SorStats["Vit"], '_'*2, sep='')
-  while userInput not in directions:
-    print("Options: town, church")
-    userInput = input()
-    if userInput == "town":
-      TownSquare2()
-    if userInput == "church":
-      ChurchLvl1Room1()
-    
-def LevelUpWar(Level, WarStats):
-  new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
-  while Level['Exp'] >= Level['LUP']:
-    Level['Lvl'] += 1
-    Level['Exp'] = Level['Exp'] - Level['LUP']
-    Level['LUP'] = round(Level['LUP'] * 1.5)
-    XPCENT = round(Level['Exp'] / Level['LUP'] * 100)
-    new_Str += 2
-    new_Mag += 1
-    new_Dex += 1
-    new_Vit += 1
-    WarStats['Str'] += new_Str
-    WarStats['Mag'] += new_Mag
-    WarStats['Dex'] += new_Dex
-    WarStats['Vit'] += new_Vit
-    print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
-    print("STR:", WarStats['Str'], '+', new_Str, "MAG:", WarStats['Mag'], '+', new_Mag, "DEX:", WarStats['Dex'], '+', new_Dex, "VIT:", WarStats['Vit'], '+', new_Vit)
-
-def LevelUpRog(Level, RogStats):
-  new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
-  while Level['Exp'] >= Level['LUP']:
-    Level['Lvl'] += 1
-    Level['Exp'] = Level['Exp'] - Level['LUP']
-    Level['LUP'] = round(Level['LUP'] * 1.5)
-    XPCENT = round(Level['Exp'] / Level['LUP'] * 100)
-    new_Str += 1
-    new_Mag += 1
-    new_Dex += 2
-    new_Vit += 1
-    RogStats['Str'] += new_Str
-    RogStats['Mag'] += new_Mag
-    RogStats['Dex'] += new_Dex
-    RogStats['Vit'] += new_Vit
-    print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
-    print("STR:", RogStats['Str'], '+', new_Str, "MAG:", RogStats['Mag'], '+', new_Mag, "DEX:", RogStats['Dex'], '+', new_Dex, "VIT:", RogStats['Vit'], '+', new_Vit)
-
-def LevelUpSor(Level, SorStats):
-  new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
-  while Level['Exp'] >= Level['LUP']:
-    Level['Lvl'] += 1
-    Level['Exp'] = Level['Exp'] - Level['LUP']
-    Level['LUP'] = round(Level['LUP'] * 1.5)
-    XPCENT = round(Level['Exp'] / Level['LUP'] * 100)
-    new_Str += 1
-    new_Mag += 2
-    new_Dex += 1
-    new_Vit += 1
-    SorStats['Str'] += new_Str
-    SorStats['Mag'] += new_Mag
-    SorStats['Dex'] += new_Dex
-    SorStats['Vit'] += new_Vit
-    print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
-    print("STR:", SorStats['Str'], '+', new_Str, "MAG:", SorStats['Mag'], '+', new_Mag, "DEX:", SorStats['Dex'], '+', new_Dex, "VIT:", SorStats['Vit'], '+', new_Vit)
+# VERSION ALPHA 2
 
 def ChurchLvl1Room1():
   directions = []
+  menu = ["CharSheet"]
   print('/\ \/' * 10)
   print("Church Level 1")
   print("\'The sanctity of this place has been fouled.\'")
   userInput = ""
-  while userInput not in directions:
+  while userInput not in directions or menu:
     print("Movement: left/right/backward/forward")
     print("Menu: CharSheet")
     userInput = input()
@@ -96,13 +24,13 @@ def ChurchLvl1Room1():
           Level['Exp'] += 150
           if myclass == class_options[0]:
             print('You swing your sword and land a successful hit.  The enemy is defeated.')
-            LevelUpWar(Level, WarStats)
+            print(LevelUpWar(Level, WarStats))
           if myclass == class_options[1]:
             print('You fire an arrow from your bow.  It hits its target.  The enemy is defeated.')
-            LevelUpRog(Level, RogStats)
+            print(LevelUpRog(Level, RogStats))
           if myclass == class_options[2]:
             print('Channeling the arcane power of your staff you manifest multiple Charged Bolts that electrocute your enemy and destroy it.')
-            LevelUpSor(Level, SorStats)
+            print(LevelUpSor(Level, SorStats))
         if userInput == 'run':
           TownSquare2()
         # Skeleton()
@@ -129,8 +57,8 @@ def ChurchLvl1Room1():
       # Zombie()
     if userInput == "backward":
       TownSquare2()
-    if userInput == "CharSheet":
-      CharSheet()
+    if userInput == "CharSheet": 
+      print(CSHEET())
 
 def TownSquare2():
   directions = []
@@ -154,7 +82,7 @@ def TownSquare2():
     if userInput == "backward":
       print("Thoughts of cowardice and retreat briefly cross your mind.  However you shake it off, determined to move forward towards the Church.")
     if userInput == "CharSheet":
-      CharSheet()
+      print(CSHEET())
 
 def showWounded():
   directions = []
@@ -179,7 +107,7 @@ def showWounded():
     if userInput == "backward":
       TownSquare2()
     if userInput == "CharSheet":
-      CharSheet()
+      print(CSHEET())
 
 def TownSquare1():
   directions = []
@@ -201,7 +129,7 @@ def TownSquare1():
     if userInput == "forward":
       showWounded()
     if userInput == "CharSheet":
-      CharSheet()
+      print(CSHEET())
 
 if __name__ == "__main__":
   Level = {
@@ -228,7 +156,70 @@ if __name__ == "__main__":
   'Vit': 20
   }
 
-  XPCENT = round(Level['Exp'] / Level['LUP'] * 100)
+  def CSHEET():
+    global CSHEET
+    def CSHEET():
+      if myclass == class_options[0]:
+        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', WarStats['Str'], '_'*2, 'MAG:', WarStats["Mag"], '_'*2, 'DEX:', WarStats["Dex"], '_'*2, 'VIT:', WarStats["Vit"], '_'*2, sep='')
+      if myclass == class_options[1]:
+        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', RogStats['Str'], '_'*2, 'MAG:', RogStats["Mag"], '_'*2, 'DEX:', RogStats["Dex"], '_'*2, 'VIT:', RogStats["Vit"], '_'*2, sep='')
+      if myclass == class_options[2]:
+        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', SorStats['Str'], '_'*2, 'MAG:', SorStats["Mag"], '_'*2, 'DEX:', SorStats["Dex"], '_'*2, 'VIT:', SorStats["Vit"], '_'*2, sep='')
+    
+  def XPCENT():
+        global XPCENT
+        def XPCENT(): return round(Level['Exp'] / Level['LUP'] * 100)
+
+  def LevelUpWar(Level, WarStats):
+    new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
+    while Level['Exp'] >= Level['LUP']:
+      Level['Lvl'] += 1
+      Level['Exp'] = Level['Exp'] - Level['LUP']
+      Level['LUP'] = round(Level['LUP'] * 1.5)
+      new_Str += 2
+      new_Mag += 1
+      new_Dex += 1
+      new_Vit += 1
+      WarStats['Str'] += new_Str
+      WarStats['Mag'] += new_Mag
+      WarStats['Dex'] += new_Dex
+      WarStats['Vit'] += new_Vit
+      print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, sep='')
+      print("STR:", WarStats['Str'], '+', new_Str, "MAG:", WarStats['Mag'], '+', new_Mag, "DEX:", WarStats['Dex'], '+', new_Dex, "VIT:", WarStats['Vit'], '+', new_Vit)
+
+  def LevelUpRog(Level, RogStats):
+    new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
+    while Level['Exp'] >= Level['LUP']:
+      Level['Lvl'] += 1
+      Level['Exp'] = Level['Exp'] - Level['LUP']
+      Level['LUP'] = round(Level['LUP'] * 1.5)
+      new_Str += 1
+      new_Mag += 1
+      new_Dex += 2
+      new_Vit += 1
+      RogStats['Str'] += new_Str
+      RogStats['Mag'] += new_Mag
+      RogStats['Dex'] += new_Dex
+      RogStats['Vit'] += new_Vit
+      print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, sep='')
+      print("STR:", RogStats['Str'], '+', new_Str, "MAG:", RogStats['Mag'], '+', new_Mag, "DEX:", RogStats['Dex'], '+', new_Dex, "VIT:", RogStats['Vit'], '+', new_Vit)
+
+  def LevelUpSor(Level, SorStats):
+    new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
+    while Level['Exp'] >= Level['LUP']:
+      Level['Lvl'] += 1
+      Level['Exp'] = Level['Exp'] - Level['LUP']
+      Level['LUP'] = round(Level['LUP'] * 1.5)
+      new_Str += 1
+      new_Mag += 2
+      new_Dex += 1
+      new_Vit += 1
+      SorStats['Str'] += new_Str
+      SorStats['Mag'] += new_Mag
+      SorStats['Dex'] += new_Dex
+      SorStats['Vit'] += new_Vit
+      print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
+      print("STR:", SorStats['Str'], '+', new_Str, "MAG:", SorStats['Mag'], '+', new_Mag, "DEX:", SorStats['Dex'], '+', new_Dex, "VIT:", SorStats['Vit'], '+', new_Vit)
   
   while True:
     print('/\ \/' * 10)

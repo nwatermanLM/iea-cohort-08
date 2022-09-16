@@ -1,6 +1,6 @@
 # Full simple RPG module from 
-# https://www.youtube.com/watch?v=FRWToxwgIjI
-# https://www.youtube.com/watch?v=nBtcJdKAkgM - Battle system
+# https://www.youtube.com/watch?v=FRWToxwgIjI - simple rpg module
+# https://www.youtube.com/watch?v=nBtcJdKAkgM - simple rpg Battle system
 # https://valtyrtriit.blogspot.com/2022/01/python-3-win-7-rpg-systems-simple-level_26.html
 # need to translate into my own code
 

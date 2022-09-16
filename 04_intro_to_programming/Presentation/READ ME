@@ -1,0 +1,33 @@
+!!! READ ME !!!
+
+This game was created specifically so I could practice and learn python.
+
+This game is for educational purposes for myself, so the story I stole from Blizzard's Diablo 1 game
+
+I've learned alot about python during this excercise, I hope to continue to develop this game into a playable text based "Diablo Clone" as we learn more python
+
+This text adventure game was created using the following resources:
+# https://www.makeuseof.com/python-text-adventure-game-create/ - basic text adventure that I heavily modified to build the game
+# https://www.youtube.com/watch?v=FRWToxwgIjI - simple rpg module that I added and heavily modified as well
+    -> https://valtyrtriit.blogspot.com/2022/01/python-3-win-7-rpg-systems-simple-level_26.html
+# Jarulf's Guide for Diablo and Hellfire (using stats, math, character info currently and will be using even more information from this for future implementations)
+
+Not yet implemented:
+# https://www.youtube.com/watch?v=nBtcJdKAkgM - simple rpg Battle system
+# Look into implementing curses (python)
+# Finish ChurchLvl1, go to ChurchLvl2
+# spells and spell levels for the sorceror
+# Inventory system
+# Gold system
+# Loot system (randomly generated item pool?)
+# Monster system
+    -> mobs generated as per dungeon level
+    -> Boss fights
+# NPC interactions like:
+    -> shops
+    -> quests
+# more character stats for battle system tied to the currently developed character stats/simple rpg system:
+    -> Armor Class
+    -> Hit Points
+    -> Mana Points
+    -> Damage / To Hit %
