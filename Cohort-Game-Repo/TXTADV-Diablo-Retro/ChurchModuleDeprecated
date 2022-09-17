@@ -1,0 +1,59 @@
+# This version of Church was originally used in Alpha 1 presentation and allowed me to show off my level up functions working
+# can be considered a unit test for the LevelUpClass functions
+
+def ChurchLvl1Room1():
+  directions = []
+  print('/\ \/' * 10)
+  print("Church Level 1")
+  print("\'The sanctity of this place has been fouled.\'")
+  userInput = ""
+  while userInput not in directions:
+    print("Movement: left/right/backward/forward")
+    print("Menu: Character")
+    userInput = input()
+    if userInput == "left":
+      options = ["attack", "run"]
+      print("A Skeleton runs at you from the shadows.")
+      print("Options: attack/run")
+      while userInput not in options:
+        userInput = input()
+        if userInput == 'attack':
+          Level['Exp'] += 150
+          if myclass == class_options[0]:
+            print('You swing your sword and land a successful hit.  The enemy is defeated.')
+            print(LevelUpWar(Level, WarStats))
+          if myclass == class_options[1]:
+            print('You fire an arrow from your bow.  It hits its target.  The enemy is defeated.')
+            print(LevelUpRog(Level, RogStats))
+          if myclass == class_options[2]:
+            print('Channeling the arcane power of your staff you manifest multiple Charged Bolts that electrocute your enemy and destroy it.')
+            print(LevelUpSor(Level, SorStats))
+        if userInput == 'run':
+          TownSquare2()
+        # Skeleton()
+    if userInput == "right":
+      print("You find an abandoned Chest.  There could be something valuable inside of it.")
+      break
+      # Chest()
+    if userInput == "forward":
+      options = ["attack", "run"]
+      print("You hear an unsettling moan ahead.  The halls of the church are barely lit by waning candle light.  A zombie is slowly shuffling towards you.")
+      print("Options: attack/run")
+      while userInput not in options:
+        userInput = input()
+        if userInput == 'attack':
+          Level['Exp'] += 75
+          if myclass == class_options[0]:
+            print('You swing your sword and land a successful hit.  The enemy is defeated.')
+            LevelUpWar(Level, WarStats)
+          if myclass == class_options[1]:
+            print('You fire an arrow from your bow.  It hits its target.  The enemy is defeated.')
+            LevelUpRog(Level, RogStats)
+          if myclass == class_options[2]:
+            print('Channeling the arcane power of your staff you manifest multiple Charged Bolts that electrocute your enemy and destroy it.')
+            LevelUpSor(Level, SorStats)
+      # Zombie()
+    if userInput == "backward":
+      TownSquare2()
+    if userInput == "character":
+      CSHEET()

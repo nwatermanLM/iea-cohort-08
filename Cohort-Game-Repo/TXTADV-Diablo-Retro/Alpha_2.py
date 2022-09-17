@@ -5,60 +5,27 @@
 
 def ChurchLvl1Room1():
   directions = []
-  menu = ["CharSheet"]
   print('/\ \/' * 10)
   print("Church Level 1")
   print("\'The sanctity of this place has been fouled.\'")
   userInput = ""
-  while userInput not in directions or menu:
+  while userInput not in directions:
     print("Movement: left/right/backward/forward")
-    print("Menu: CharSheet")
+    print("Menu: character/inventory")
     userInput = input()
     if userInput == "left":
-      options = ["attack", "run"]
-      print("A Skeleton runs at you from the shadows.")
-      print("Options: attack/run")
-      while userInput not in options:
-        userInput = input()
-        if userInput == 'attack':
-          Level['Exp'] += 150
-          if myclass == class_options[0]:
-            print('You swing your sword and land a successful hit.  The enemy is defeated.')
-            print(LevelUpWar(Level, WarStats))
-          if myclass == class_options[1]:
-            print('You fire an arrow from your bow.  It hits its target.  The enemy is defeated.')
-            print(LevelUpRog(Level, RogStats))
-          if myclass == class_options[2]:
-            print('Channeling the arcane power of your staff you manifest multiple Charged Bolts that electrocute your enemy and destroy it.')
-            print(LevelUpSor(Level, SorStats))
-        if userInput == 'run':
-          TownSquare2()
-        # Skeleton()
+      print('Skeleton')
+      # Monster()
     if userInput == "right":
       print("You find an abandoned Chest.  There could be something valuable inside of it.")
-      # Chest()
+      # Object()
     if userInput == "forward":
-      options = ["attack", "run"]
-      print("You hear an unsettling moan ahead.  The halls of the church are barely lit by waning candle light.  A zombie is slowly shuffling towards you.")
-      print("Options: attack/run")
-      while userInput not in options:
-        userInput = input()
-        if userInput == 'attack':
-          Level['Exp'] += 75
-          if myclass == class_options[0]:
-            print('You swing your sword and land a successful hit.  The enemy is defeated.')
-            LevelUpWar(Level, WarStats)
-          if myclass == class_options[1]:
-            print('You fire an arrow from your bow.  It hits its target.  The enemy is defeated.')
-            LevelUpRog(Level, RogStats)
-          if myclass == class_options[2]:
-            print('Channeling the arcane power of your staff you manifest multiple Charged Bolts that electrocute your enemy and destroy it.')
-            LevelUpSor(Level, SorStats)
-      # Zombie()
+      print('Zombie')
+      # Monster()
     if userInput == "backward":
       TownSquare2()
-    if userInput == "CharSheet": 
-      print(CSHEET())
+    if userInput == "character":
+      CSHEET()
 
 def TownSquare2():
   directions = []
@@ -69,7 +36,7 @@ def TownSquare2():
   userInput = ""
   while userInput not in directions:
     print("Movement: left/right/backward/forward")
-    print("Menu: CharSheet")
+    print("Menu: character/inventory")
     userInput = input()
     if userInput == "left":
       print("Griswald the Blacksmith is busy hammering away at a blade on his anvil.  He does not seem to notice you.")
@@ -81,8 +48,8 @@ def TownSquare2():
       ChurchLvl1Room1()
     if userInput == "backward":
       print("Thoughts of cowardice and retreat briefly cross your mind.  However you shake it off, determined to move forward towards the Church.")
-    if userInput == "CharSheet":
-      print(CSHEET())
+    if userInput == "character":
+      CSHEET()
 
 def showWounded():
   directions = []
@@ -93,7 +60,7 @@ def showWounded():
   userInput = ""
   while userInput not in directions:
     print("Movement: left/right/backward/forward")
-    print("Menu: CharSheet")
+    print("Menu: character/inventory")
     userInput = input()
     if userInput == "right":
       print("You see the Witch's hut in the distance.")
@@ -106,8 +73,8 @@ def showWounded():
       userInput = input()
     if userInput == "backward":
       TownSquare2()
-    if userInput == "CharSheet":
-      print(CSHEET())
+    if userInput == "character":
+      CSHEET()
 
 def TownSquare1():
   directions = []
@@ -118,7 +85,7 @@ def TownSquare1():
   userInput = ""
   while userInput not in directions:
     print("Movement: left/right/backward/forward")
-    print("Menu: CharSheet")
+    print("Menu: character/inventory")
     userInput = input()
     if userInput == "left":
       print("I should head towards the Church.")
@@ -128,8 +95,8 @@ def TownSquare1():
       print("Thoughts of cowardice and retreat briefly cross your mind.  However you shake it off, determined to move forward towards the Church.")
     if userInput == "forward":
       showWounded()
-    if userInput == "CharSheet":
-      print(CSHEET())
+    if userInput == "character":
+      CSHEET()
 
 if __name__ == "__main__":
   Level = {
@@ -157,18 +124,21 @@ if __name__ == "__main__":
   }
 
   def CSHEET():
-    global CSHEET
-    def CSHEET():
-      if myclass == class_options[0]:
-        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', WarStats['Str'], '_'*2, 'MAG:', WarStats["Mag"], '_'*2, 'DEX:', WarStats["Dex"], '_'*2, 'VIT:', WarStats["Vit"], '_'*2, sep='')
-      if myclass == class_options[1]:
-        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', RogStats['Str'], '_'*2, 'MAG:', RogStats["Mag"], '_'*2, 'DEX:', RogStats["Dex"], '_'*2, 'VIT:', RogStats["Vit"], '_'*2, sep='')
-      if myclass == class_options[2]:
-        return print('_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, 'STR:', SorStats['Str'], '_'*2, 'MAG:', SorStats["Mag"], '_'*2, 'DEX:', SorStats["Dex"], '_'*2, 'VIT:', SorStats["Vit"], '_'*2, sep='')
+    if myclass == class_options[0]:
+      return print('_'*2, 'Name:', name, '_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), 
+      '%', 'of', Level['LUP'], '_'*2, 'STR:', WarStats['Str'], '_'*2, 'MAG:', WarStats["Mag"], '_'*2, 'DEX:', 
+      WarStats["Dex"], '_'*2, 'VIT:', WarStats["Vit"], '_'*2, sep='')
+    if myclass == class_options[1]:
+      return print('_'*2, 'Name:', name, '_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), 
+      '%', 'of', Level['LUP'], '_'*2, 'STR:', RogStats['Str'], '_'*2, 'MAG:', RogStats["Mag"], '_'*2, 'DEX:', 
+      RogStats["Dex"], '_'*2, 'VIT:', RogStats["Vit"], '_'*2, sep='')
+    if myclass == class_options[2]:
+      return print('_'*2, 'Name:', name, '_'*2, 'Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), 
+      '%', 'of', Level['LUP'], '_'*2, 'STR:', SorStats['Str'], '_'*2, 'MAG:', SorStats["Mag"], '_'*2, 'DEX:', 
+      SorStats["Dex"], '_'*2, 'VIT:', SorStats["Vit"], '_'*2, sep='')
     
   def XPCENT():
-        global XPCENT
-        def XPCENT(): return round(Level['Exp'] / Level['LUP'] * 100)
+    return round(Level['Exp'] / Level['LUP'] * 100)
 
   def LevelUpWar(Level, WarStats):
     new_Str, new_Mag, new_Dex, new_Vit = 0, 0, 0, 0
@@ -218,13 +188,13 @@ if __name__ == "__main__":
       SorStats['Mag'] += new_Mag
       SorStats['Dex'] += new_Dex
       SorStats['Vit'] += new_Vit
-      print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT, '%', 'of', Level['LUP'], '_'*2, sep='')
+      print('Level Up! You are now Level:', Level['Lvl'], '_'*2, 'XP:', XPCENT(), '%', 'of', Level['LUP'], '_'*2, sep='')
       print("STR:", SorStats['Str'], '+', new_Str, "MAG:", SorStats['Mag'], '+', new_Mag, "DEX:", SorStats['Dex'], '+', new_Dex, "VIT:", SorStats['Vit'], '+', new_Vit)
   
   while True:
     print('/\ \/' * 10)
     print('_' * 10, 'DIABLO RETROGRADED', '_' * 10)
-    print('/\ \/' * 10)
+    print('\/ /\\' * 10)
     print("Name your character (eight digits maximum): ")
     print('/\ \/' * 10)
     name = input()
@@ -232,7 +202,7 @@ if __name__ == "__main__":
             print("Your Character name cannot be more than eight digits long.")
             print("Name your character (eight digits maximum): ")
             name = input()
-    print('/\ \/' * 10)
+    print('\/ /\\' * 10)
     print("Choose your class: Warrior, Rogue, or Sorceror: ")
     class_options = [ 'Warrior', 'Rogue', 'Sorceror' ]
     myclass = input()
@@ -253,13 +223,7 @@ if __name__ == "__main__":
     print("You have arrived in the town of Tristram within the region of Khanduras.")
     print("The town seems unassuming, besides the fact that it rests on the outskirts of the home and birthplace of King Leoric.")
     print("You hear screams coming from the Church that sits in the North West corner of Tristram.")
-    print(f'Greetings, {name} the {myclass}. Stay awhile and listen...')
-    print('Class:', myclass, '_'*2, 'Lvl:', Level['Lvl'], '_'*2, sep='')
-    if myclass == class_options[0]:
-        print('STR:', WarStats['Str'], '_'*2, 'MAG:', WarStats["Mag"], '_'*2, 'DEX:', WarStats["Dex"], '_'*2, 'VIT:', WarStats["Vit"], '_'*2, sep='')
-    if myclass == class_options[1]:
-        print('STR:', RogStats['Str'], '_'*2, 'MAG:', RogStats["Mag"], '_'*2, 'DEX:', RogStats["Dex"], '_'*2, 'VIT:', RogStats["Vit"], '_'*2, sep='')
-    if myclass == class_options[2]:
-        print('STR:', SorStats['Str'], '_'*2, 'MAG:', SorStats["Mag"], '_'*2, 'DEX:', SorStats["Dex"], '_'*2, 'VIT:', SorStats["Vit"], '_'*2, sep='')
-    print('/\ \/' * 10)
+    print(f'Greetings, {name} the {myclass}. Stay awhile and listen...')  
+    CSHEET()
+    print('\/ /\\' * 10)
     TownSquare1()
