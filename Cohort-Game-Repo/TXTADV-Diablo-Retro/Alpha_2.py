@@ -209,7 +209,7 @@ if __name__ == "__main__":
     while myclass == class_options[0] or class_options[1] or class_options[2]:
         if myclass == class_options[0]:
             print("A mighty Warrior here to save us.")
-            break
+            
         if myclass == class_options[1]:
             print("A cunning Rogue here to save us.")
             break
