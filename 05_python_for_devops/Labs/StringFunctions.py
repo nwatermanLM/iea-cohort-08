@@ -5,7 +5,7 @@
 while True:
     print("Please type a phrase or group of letters: ")
     userIn = (input())
-    len(userIn) <= 26
+    len(userIn) <= 32
     if userIn.isalpha() == True:
         userIn = userIn.lower()
         print(f'You entered: {userIn}') 
@@ -18,20 +18,24 @@ while True:
         print(f'You entered: {userStride}')
         break
 
-Answer = []
-IncStride = 0
-ltrList = list(userIn)
-print(ltrList)
+Answer = ""
 
-while True:
-    IncStride <= userStride
-    for ltr in ltrList:
-        if ltr == ltrList[IncStride]:
-            Answer.append(ltr.upper())
-            del ltrList[IncStride]
-            IncStride += 1
-    print(ltrList)
-    print(Answer)
+for IncStride in range(0, len(userIn), userStride * 2):
+    FirstHalf = userIn[IncStride:IncStride+userStride].upper()
+    SecondHalf = userIn[IncStride+userStride:IncStride+userStride*2].lower()
+    Answer += FirstHalf + SecondHalf
+print(Answer)
+
+
+#while True:
+    #IncStride <= userStride
+    #for ltr in ltrList:
+        #if ltr == ltrList[IncStride]:
+            #Answer.append(ltr.upper())
+            #del ltrList[IncStride]
+            #IncStride += 1
+    #print(ltrList)
+    #print(Answer)
 
 # for ltr in ltrList[userStride]:
 
