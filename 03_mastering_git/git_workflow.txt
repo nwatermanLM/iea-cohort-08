@@ -100,4 +100,10 @@ Once you have added the remote repository, you can pull changes from that reposi
                 git commit .
 ●	Your working directory should now be clean, and include the upstream changes merged with your local changes.
 ●	You can now push up to your fork (usually “origin”) to ensure the upstream changes are included in your fork as well:
+<<<<<<< HEAD
                 git push origin <primary>
+=======
+                git push origin <primary>
+
+                
+>>>>>>> 6a7d598d183b1e2682acd5638e93a93e1d9d8a46
