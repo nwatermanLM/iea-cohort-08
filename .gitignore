@@ -1,6 +1,23 @@
 .ipynb_checkpoints/
 __pycache__
+<<<<<<< HEAD
 /.~lock
 .pytest_cache
 .DS_Store
 ~$_
+=======
+
+
+# Demo virtualenvs
+08_ansible/demos/ansible_demo
+10_docker/demos/venv
+12_aws/demos/venv
+
+
+# Libreoffice lock files
+.~lock*
+
+
+# Vim backup files
+*.swp
+>>>>>>> 631a91aded615f7105be002ab5e0178f04084d8c
